@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Asees 🤍</title>
+
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: radial-gradient(circle at top, #1b2b4f, #070b18);
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.25;
+    z-index: 0;
+  }
+
+  .container {
+    display: flex;
+    height: 100vh;
+    padding: 50px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .message {
+    width: 45%;
+    font-size: 1.35rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    text-shadow: 0 0 8px rgba(255,255,255,0.25);
+  }
+
+  .right {
+    width: 45%;
+    text-align: center;
+  }
+
+  .right img {
+    width: 320px;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.6));
+  }
+
+  .cursor {
+    border-right: 3px solid rgba(255,255,255,0.8);
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  .float {
+    position: absolute;
+    animation: rise 12s linear infinite;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.8));
+    opacity: 0.95;
+    z-index: 1;
+  }
+
+  @keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+  }
+
+  .heart-tree {
+    position: absolute;
+    left: 25px;
+    bottom: 50px;
+    font-size: 26px;
+    line-height: 1.2;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+    z-index: 1;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="heart-tree">
+  &nbsp;&nbsp;🤍<br>
+  &nbsp;🤍🤍🤍<br>
+  🤍🤍🤍🤍🤍<br>
+  &nbsp;&nbsp;🌿
+</div>
+
+<div class="container">
+  <div class="message" id="message"></div>
+
+  <div class="right">
+    <img src="https://i.imgur.com/6Z6YWRo.png" alt="White Rose Tree">
+  </div>
+</div>
+
+<script>
+  const text = `
+Hey Sunshine 🤍,
+
+Happy Birthday, Asees 🌷✨
+
+I hope tonight feels gentle,
+like the universe slowed down
+just to smile at you 💫
+
+You have this quiet magic —
+the kind that glows softly,
+without ever trying too hard.
+
+I miss you.
+In the calm moments.
+In the little things.
+In ways that feel warm, not heavy 🤍
+
+I hope you eat your favourite potatoes 🥔,
+have rice that tastes like comfort 🍚,
+and feel wrapped in warmth,
+even in the quiet moments.
+
+And I just want you to know this —
+I love you.
+Always have, always will 💫
+
+You’re my universe, Asees.
+Not loudly.
+Not desperately.
+Just honestly 🤍🌌
+
+Have the most beautiful birthday,
+my favourite soul 🌹💫
+`;
+
+  let i = 0;
+  const speed = 40;
+  const msg = document.getElementById("message");
+
+  function typeWriter() {
+    if (i < text.length) {
+      msg.innerHTML += text.charAt(i);
+      msg.innerHTML += '<span class="cursor"></span>';
+      i++;
+      setTimeout(() => {
+        msg.innerHTML = msg.innerHTML.replace('<span class="cursor"></span>', '');
+        typeWriter();
+      }, speed);
+    }
+  }
+  typeWriter();
+
+  function floatItem() {
+    const item = document.createElement("div");
+    item.className = "float";
+
+    const items = ["🤍", "🌹", "🥔", "🍚", "💫"];
+    item.textContent = items[Math.floor(Math.random() * items.length)];
+
+    item.style.left = Math.random() * window.innerWidth + "px";
+    item.style.fontSize = (20 + Math.random() * 28) + "px";
+    item.style.top = "100vh";
+
+    document.body.appendChild(item);
+    setTimeout(() => item.remove(), 12000);
+  }
+
+  setInterval(floatItem, 500);
+</script>
+
+</body>
+</html>
